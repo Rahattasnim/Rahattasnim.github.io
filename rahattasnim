@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<head>
+<script src="/assets/jquery.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
+<style>
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #232323;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Londrina Shadow', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: #aaaaaa;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: #bbbbbb;
+  margin: 0px 0 70px 0;
+}
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+  ul {
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <ul>
+      <li><button onclick=appetizers()>appetizers</button></li>
+      <li><button onclick=entrees()>entrees</button></li>
+      <li><button onclick=desserts()>desserts</button></li>
+    </ul>
+
+<h1>Rahat's restaurant</h1>
+<h2>a New York City eatery</h2>
+
+<div id="rahat"> </div>
+
+
+<script>
+appetizersImages = [ 
+ 	'url("http://sahajanandcatering.co.uk/wp-content/uploads/2016/07/punjabi-samosa.jpg")',
+	'url("https://www.seriouseats.com/images/2012/09/20120926-enoki-onion-fritters-curry-mayo-3.jpg")',
+	'url("http://curlytales.com/wp-content/uploads/2017/06/puchka_kolkatta-e1497946353920.jpg")',
+]
+
+entreesImages = [ 'url("https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366,h_240,c_fill/hpj3wayfmkxzjusywsyu")',
+	'url("https://www.freepressjournal.in/wp-content/uploads/2015/08/Intro-burrp-com.jpg")',
+	'url("https://static.telegraphindia.com/library/THE_TELEGRAPH/mig/1140921/images/thali1.jpg")',
+]
+
+dessertsImages = [ 'url("https://blog.goway.com/globetrotting/wp-content/uploads/2018/07/Mango-lassi-with-mint-leaves-India-_1006633264.jpg")',
+	'url("https://t4.ftcdn.net/jpg/02/38/93/67/240_F_238936781_zxGnwNMEL5wiAGUUjvkYidxaTi94jGQY.jpg")',
+	'url("http://www.recipe4living.com/assets/itemimages/400/400/3/default_c83ed46ab671455bb58e76185ea747fa_Pistachio%20kulfidreamstime_s_88813676.jpg")',
+]
+
+appetizersDivs = [
+  '<div class="item"><p>samosa<span class="price">$5</span><br /><small>vegetable flour.</small></p></div>',
+			'<div class="item"><p>crispy enoki onion fritters <span class="price">$6</span><br /><small>onion flour.</small></p></div>',
+			'<div class="item"><p>pani puri <span class="price">$6</span><br /><small>crispy puris water mixed with other ingredients.</small></p></div>',
+ ]  
+
+entreesDivs = [
+  '<div class="item"><p>biryani<span class="price">$12</span><br /><small>rice chicken .</small></p></div>',
+			'<div class="item"><p>rajasthani thali  <span class="price">$50</span><br /><small>rice bread  different types of vegetablsdesserts drinks its a combo.</small></p></div>',
+			'<div class="item"><p>bengali thali<span class="price">$30</span><br /><small>rice fish curry different types of vegtables goat or beef meat its a combo of many items.</small></p></div>',
+ ]  
+  
+dessertsDivs = [
+  '<div class="item"><p>mango lassi<span class="price">$8</span><br /><small>mango yogurt milk sugar .</small></p></div>',
+			'<div class="item"><p>golaab jamun<span class="price">$1:50</span><br /><small>milk-solied-based sweet.</small></p></div>',
+			'<div class="item"><p>kulfi<span class="price">$4</span><br /><small>ice-cream.</small></p></div>',
+ ]  
+ 
+  function appetizers() {
+    //alert("appetizers")
+  Food = document.getElementById("rahat")
+	Food.innerHTML = ''
+	Food.innerHTML += appetizersDivs[0]
+  Food.innerHTML += appetizersDivs[1]
+  Food.innerHTML += appetizersDivs[2] 
+	  
+	  items = document.getElementsByClassName("item")
+    items[0].style.background = appetizersImages[0]
+    items[0].style.backgroundSize = '100% 100%'
+    items[1].style.background = appetizersImages[1]
+    items[2].style.background = appetizersImages[2]
+  }
+  
+  function entrees() {
+   //alert("entrees")
+   
+  Food = document.getElementById("rahat")
+  Food.innerHTML = ''
+	Food.innerHTML += entreesDivs[0]
+  Food.innerHTML += entreesDivs[1]
+  Food.innerHTML += entreesDivs[2] 
+  
+   items = document.getElementsByClassName("item")
+   items[0].style.background = entreesImages[0]
+   items[0].style.backgroundSize = '100% 100%'
+   items[1].style.background = entreesImages[1]
+   items[1].style.backgroundSize = '100% 100%'
+   items[2].style.background = entreesImages[2]
+   items[2].style.backgroundSize = '100% 100%'
+
+  }
+  
+  function desserts() {
+  //alert("desserts")
+  Food = document.getElementById("rahat")
+  Food.innerHTML = ''
+	Food.innerHTML += dessertsDivs[0]
+  Food.innerHTML += dessertsDivs[1]
+  Food.innerHTML += dessertsDivs[2] 
+  
+  items = document.getElementsByClassName("item")
+   items[0].style.background = dessertsImages[0]
+   items[0].style.backgroundSize = '100% 100%'
+   items[1].style.background = dessertsImages[1]
+   items[1].style.backgroundSize = '100% 100%'
+   items[2].style.background = dessertsImages[2]
+   items[2].style.backgroundSize = '100% 100%'
+  }
+
+$('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+</body>
